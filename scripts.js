@@ -22,13 +22,14 @@ $(document).ready(function() {
     		dataType: 'json',
     		data: {},
     		success: function(response) {
-    			location = response.name;
-    			$('#location').text(location);
-    			temp = response.main.temp;
-    			$('#temp').text(temp);
-    			conditions = response.weather.description;
+    			whereYouIs = response.name;
+    			$('#whereYouIs').text(whereYouIs);
+    			temp = response.main[0];
+    			$('#temp').data(temp); //problem 1 is here, I can't get this to pull the number from the json file
+    			conditions = response.weather[0].description;
     			$('#conditions').text(conditions);
-
+    			icon = response.weather[0].icon;
+    			$('#condition_icon').text('<i src=\"' + icon + '\"/></i>'); //problem 2 is here it inputs the icon in " " not as an icon
     		}
     	});
     }
