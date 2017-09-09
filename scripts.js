@@ -29,7 +29,7 @@ $(document).ready(function() {
     			conditions = response.weather[0].description;
     			$('#conditions').text(conditions);
     			icon = response.weather[0].icon;
-    			$('#condition_icon').text('<i src=\"' + icon + '\"/></i>'); //problem 2 is here it inputs the icon in " " not as an icon
+    			$('#condition_icon').html('<span src=\"' + icon + '\"></span>'); //problem 2 is here it does not load the icon
     		}
     	});
     }
