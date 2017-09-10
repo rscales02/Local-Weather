@@ -39,14 +39,14 @@ $(document).ready(function() {
             dataType: 'json',
             data: {},
             success: function(response) {
-                whereYouIs = response.name;
+                var whereYouIs = response.name;
                 $('#whereYouIs').text(whereYouIs); //insert location
-                temperature = response.main.temp;
+                var temperature = response.main.temp;
                 f_temp = temperature * 9/5 +32;
                 $('#temperature').html(response.main.temp); //insert temp
-                conditions = response.weather[0].description;
+                var conditions = response.weather[0].description;
                 $('#conditions').text(conditions); //insert conditions
-                icon = response.weather[0].icon;
+                var icon = response.weather[0].icon;
                 $('#condition_icon').html('<img src=\"' + icon + '\"/>'); //insert conditions icon
             }
         });
