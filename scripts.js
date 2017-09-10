@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var temp;
 	//html5 geolocator
     function pos (pos) {
         var lat = pos.coords.latitude;
@@ -17,7 +18,19 @@ $(document).ready(function() {
      var now = new Date();
      now = now.toDateString();
      $('#time').html(now);
-    
+
+     $('#convert').on('click', function(event) {
+     	/* Act on the event */
+     	displayWeather();
+     	if ($('#temperature').hasClass('celcius')) {
+     		temp = f_temp;
+     	} else {
+     		temp = temperature;
+     	}
+     	$('#temperature').html(temperature);
+     	$('#temperature').toggleClass('celcius farenheit');
+     });
+         
     //weather catcher to return json file
     function displayWeather(lat, long) {
     	$.ajax({
@@ -27,13 +40,14 @@ $(document).ready(function() {
     		data: {},
     		success: function(response) {
     			whereYouIs = response.name;
-    			$('#whereYouIs').text(whereYouIs);
-    			temp = response.main.temp;
-    			$('#temp').text(temp); //problem 1 is here, I can't get this to pull the number from the json file
+    			$('#whereYouIs').text(whereYouIs); //insert location
+    			temperature = response.main.temp;
+    			f_temp = temperature * 9/5 +32;
+    			$('#temperature').html(temperature); //insert temp
     			conditions = response.weather[0].description;
-    			$('#conditions').text(conditions);
+    			$('#conditions').text(conditions); //insert conditions
     			icon = response.weather[0].icon;
-    			$('#condition_icon').html('<span src=\"' + icon + '\"></span>'); //problem 2 is here it does not load the icon
+    			$('#condition_icon').html('<img src=\"' + icon + '\"/>'); //insert conditions icon
     		}
     	});
     }
