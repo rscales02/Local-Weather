@@ -13,6 +13,10 @@ $(document).ready(function() {
      	navigator.geolocation.getCurrentPosition(pos);
      	return false;
      }
+
+     var now = new Date();
+     now = now.toDateString();
+     $('#time').html(now);
     
     //weather catcher to return json file
     function displayWeather(lat, long) {
@@ -24,8 +28,8 @@ $(document).ready(function() {
     		success: function(response) {
     			whereYouIs = response.name;
     			$('#whereYouIs').text(whereYouIs);
-    			temp = response.main[0];
-    			$('#temp').data(temp); //problem 1 is here, I can't get this to pull the number from the json file
+    			temp = response.main.temp;
+    			$('#temp').text(temp); //problem 1 is here, I can't get this to pull the number from the json file
     			conditions = response.weather[0].description;
     			$('#conditions').text(conditions);
     			icon = response.weather[0].icon;
