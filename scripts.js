@@ -42,7 +42,7 @@ $(document).ready(function() {
                 var whereYouIs = response.name;
                 $('#whereYouIs').text(whereYouIs); //insert location
                 var temperature = response.main.temp;
-                f_temp = temperature * 9/5 +32;
+                var f_temp = temperature * 9/5 +32;
                 $('#temperature').html(response.main.temp); //insert temp
                 var conditions = response.weather[0].description;
                 $('#conditions').text(conditions); //insert conditions
