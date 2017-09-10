@@ -17,6 +17,10 @@ $(document).ready(function() {
      var now = new Date();
      now = now.toDateString();
      $('#time').html(now);
+
+     function convertTemp() {
+
+     }
     
     //weather catcher to return json file
     function displayWeather(lat, long) {
@@ -27,13 +31,13 @@ $(document).ready(function() {
     		data: {},
     		success: function(response) {
     			whereYouIs = response.name;
-    			$('#whereYouIs').text(whereYouIs);
+    			$('#whereYouIs').text(whereYouIs); //insert location
     			temp = response.main.temp;
-    			$('#temp').text(temp); //problem 1 is here, I can't get this to pull the number from the json file
+    			$('#temperature').text(temp); //insert temp
     			conditions = response.weather[0].description;
-    			$('#conditions').text(conditions);
+    			$('#conditions').text(conditions); //insert conditions
     			icon = response.weather[0].icon;
-    			$('#condition_icon').html('<span src=\"' + icon + '\"></span>'); //problem 2 is here it does not load the icon
+    			$('#condition_icon').html('<img src=\"' + icon + '\"/>'); //insert conditions icon
     		}
     	});
     }
