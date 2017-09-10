@@ -18,10 +18,18 @@ $(document).ready(function() {
      now = now.toDateString();
      $('#time').html(now);
 
-     function convertTemp() {
-
-     }
-    
+     $('#convert').on('click', function(event) {
+     	/* Act on the event */
+     	displayWeather();
+     	if ($('#temperature').hasClass('celcius')) {
+     		temp = f_temp;
+     	} else {
+     		temp = temperature;
+     	} temp = temp.toFixed(2);
+     	$('#temperature').html(temperature);
+     	$('#temperature').toggleClass('celcius farenheit');
+     });
+         
     //weather catcher to return json file
     function displayWeather(lat, long) {
     	$.ajax({
@@ -32,8 +40,9 @@ $(document).ready(function() {
     		success: function(response) {
     			whereYouIs = response.name;
     			$('#whereYouIs').text(whereYouIs); //insert location
-    			temp = response.main.temp;
-    			$('#temperature').text(temp); //insert temp
+    			temperature = response.main.temp;
+    			f_temp = temperature * 9/5 +32;
+    			$('#temperature').html(temperature); //insert temp
     			conditions = response.weather[0].description;
     			$('#conditions').text(conditions); //insert conditions
     			icon = response.weather[0].icon;
