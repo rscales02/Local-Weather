@@ -34,7 +34,7 @@ var data = "";
                 data = response;
     			var whereYouIs = data.name;
                 $('#whereYouIs').text(whereYouIs); //insert location
-                var temperature = data.main.temp;
+                var temperature = Math.round(data.main.temp);
                 $('#temperature').html(temperature); //insert temp
                 var conditions = data.weather[0].description;
                 $('#conditions').text(conditions); //insert conditions
@@ -48,9 +48,9 @@ var data = "";
         /* Act on the event */
         var tempConvert = data.main.temp;
         if ($('#temperature').hasClass('celcius')) {
-            tempConvert = tempConvert * 9/5 + 32;
+            tempConvert = Math.round(tempConvert * 9/5 + 32);
         } else {
-            tempConvert = tempConvert;
+            tempConvert = Math.round(tempConvert);
         }
         $('#temperature').html(tempConvert);
         $('#temperature').toggleClass('celcius farenheit');
