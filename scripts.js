@@ -1,9 +1,6 @@
 $(document).ready(function() {
-<<<<<<< HEAD
-=======
 var data = "";
 
->>>>>>> pen-work-git-dont
 	var temp;
 	//html5 geolocator
     function pos (pos) {
@@ -25,7 +22,6 @@ var data = "";
      var now = new Date();
      now = now.toDateString();
      $('#time').html(now);
-<<<<<<< HEAD
 
      $('#convert').on('click', function(event) {
      	/* Act on the event */
@@ -38,10 +34,7 @@ var data = "";
      	$('#temperature').html(temperature);
      	$('#temperature').toggleClass('celcius farenheit');
      });
-         
-=======
-      
->>>>>>> pen-work-git-dont
+
     //weather catcher to return json file
     function getWeather(lat, long) {
     	$.ajax({
@@ -50,20 +43,16 @@ var data = "";
     		dataType: 'json',
     		data: {},
     		success: function(response) {
-<<<<<<< HEAD
+                data = response;
     			whereYouIs = response.name;
     			$('#whereYouIs').text(whereYouIs); //insert location
     			temperature = response.main.temp;
-    			f_temp = temperature * 9/5 +32;
     			$('#temperature').html(temperature); //insert temp
     			conditions = response.weather[0].description;
     			$('#conditions').text(conditions); //insert conditions
     			icon = response.weather[0].icon;
     			$('#condition_icon').html('<img src=\"' + icon + '\"/>'); //insert conditions icon
-=======
-                data = response;
-    			
->>>>>>> pen-work-git-dont
+                
     		}
     	});
     }
