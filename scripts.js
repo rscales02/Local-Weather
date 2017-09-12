@@ -23,18 +23,6 @@ var data = "";
      now = now.toDateString();
      $('#time').html(now);
 
-     $('#convert').on('click', function(event) {
-     	/* Act on the event */
-     	displayWeather();
-     	if ($('#temperature').hasClass('celcius')) {
-     		temp = f_temp;
-     	} else {
-     		temp = temperature;
-     	}
-     	$('#temperature').html(temperature);
-     	$('#temperature').toggleClass('celcius farenheit');
-     });
-
     //weather catcher to return json file
     function getWeather(lat, long) {
     	$.ajax({
@@ -44,28 +32,16 @@ var data = "";
     		data: {},
     		success: function(response) {
                 data = response;
-    			whereYouIs = response.name;
-    			$('#whereYouIs').text(whereYouIs); //insert location
-    			temperature = response.main.temp;
-    			$('#temperature').html(temperature); //insert temp
-    			conditions = response.weather[0].description;
-    			$('#conditions').text(conditions); //insert conditions
-    			icon = response.weather[0].icon;
-    			$('#condition_icon').html('<img src=\"' + icon + '\"/>'); //insert conditions icon
-                
+    			var whereYouIs = data.name;
+                $('#whereYouIs').text(whereYouIs); //insert location
+                var temperature = data.main.temp;
+                $('#temperature').html(temperature); //insert temp
+                var conditions = data.weather[0].description;
+                $('#conditions').text(conditions); //insert conditions
+                var icon = data.weather[0].icon;
+                $('#condition_icon').html('<img src=\"' + icon + '\"/>'); //insert conditions icon
     		}
     	});
-    }
-
-    function displayWeather(){
-        var whereYouIs = data.name;
-        $('#whereYouIs').text(whereYouIs); //insert location
-        var temperature = data.main.temp;
-        $('#temperature').html(temperature); //insert temp
-        var conditions = data.weather[0].description;
-        $('#conditions').text(conditions); //insert conditions
-        var icon = data.weather[0].icon;
-        $('#condition_icon').html('<img src=\"' + icon + '\"/>'); //insert conditions icon
     }
 
     $('#convert').on('click', function(event) {
