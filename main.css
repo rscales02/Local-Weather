@@ -12,3 +12,12 @@ body {
 	font-size: 18px;
 	font-family: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif;
 }
+
+#convert {
+	background-color: blue;
+	transition: all 0.5s
+}
+
+#convert:hover {
+	background-color: pink;
+}

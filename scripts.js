@@ -32,6 +32,7 @@ var data = "";
     		data: {},
     		success: function(response) {
                 data = response;
+                console.log(response);
     			var whereYouIs = data.name;
                 $('#whereYouIs').text(whereYouIs); //insert location
                 var temperature = Math.round(data.main.temp);
